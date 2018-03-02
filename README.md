@@ -1,126 +1,84 @@
-# JavaScript入門編
+# JavaScript入門編2
 
 ## 目次
 
-- JavaScriptとは
-- 基本的な使い方
-- 変数について
-- データ型について
+- if文
+- ゲームを作ってみよう
 - 演算子について
 
-## JavaScriptとは
+## if文
 
-- WEBブラウザに実装されているプログラミング言語
-- HTML・CSSの要素を操作して、WEBサイトに動きをつけたい時に使用
+if文を用いると「もし○○ならば●●を行う」という条件分岐が可能になります。
 
-## 基本的な使い方
-
-- HTMLファイルに直接記入する
-- JSファイルを作成し、外部ファイルとして読み込む
-
-## HTMLファイルに記述する
-
-```html
-<!-- scriptタグ内にJavaScriptコードを記述する -->
-<script>
-    alert("Hello Job One");
-</script>
-```
-
-## JSファイルを作成し外部ファイルとして読み込む
-
-```html
-<!-- HTMLファイル -->
-<script>
-    <script src="js/sample1.js"></script>
-</script>
-```
+if (true)である必要があります。
 
 ```js
-//sample1.js
-/* 外部ファイルとして読み込む使い方が主流です。 */
-alert("Hello Job One");
+if (true) {
+  // ()がtrueであれば、処理を実行
+}
 ```
 
-## 変数について①
+![if1](https://user-images.githubusercontent.com/35711528/36883927-e54e94a0-1e20-11e8-8f42-878a15134da3.png)
 
-- データを入れる箱のようなもの。
-- 変数を使うことで何度も同じコードを書かなくて済む
-![values](https://user-images.githubusercontent.com/35711528/36879211-00effebc-1e06-11e8-8056-47f1fb12e066.png)
-
-msgという箱に「 Hello Job One 」という文字列が入っているイメージです。
-
-## 変数について②
+trueかどうかは入門編1で使用した演算子を主に用いて判断します。
 
 ```js
 var msg = "Hello Job One";
-alert(msg);
 
-var world =  "world";
-alert(world);
-// 変数を新しく作る時、かならず「var」を付ける必要があります。作った後は「var」を付ける必要はありません。
-/* ただしES2015以降の仕様では「let」または「const」を使うことが多いです*/
+if (msg === "Hello Job One") {
+  // msgが“Hello Job One”であれば、trueを返却するので処理を実行
+}
 ```
 
-## データ型について
+## else文
 
-- 数値(""又は'' で囲われていない数値)
-- 文字列("" 又は'' で囲った文字列)
-- 真偽値( true / false)
-- null
-- オブジェクト
-　ー配列
-　ー関数
-等があります。
+if文を用いると「もし○○ならば●●を行う」という条件分岐が可能になります。elseを用いることで「もし○○でなければ●●を行う」という処理が可能になります。
 
-少しづつ覚えていきましょう。
-
-## 演算子について①
-
-- ＝
-
-代入演算子。
-変数に値を代入する時に使います。
+![else1](https://user-images.githubusercontent.com/35711528/36883934-ee9d00a0-1e20-11e8-83e7-f83c185fc6e3.png)
 
 ```js
 var msg = "Hello Job One";
+
+if (msg === "Hello world") {
+
+} else {
+// msgが“Hello world”でなければ、falseを返却するので処理を実行
+}
 ```
 
-## 演算子について②
+## else if文
+else ifを用いると「もし◯◯だったら●●を行う、そうでなくもし△△であれば▲▲を行う、いずれでもなければ■■を行う」という条件分岐ができます。
 
-- ＋
+![elseif1](https://user-images.githubusercontent.com/35711528/36883942-f759efbe-1e20-11e8-993e-f6540b811cdb.png)
 
-加算演算子
-
-文字列結合、数値の加算等に使います。
 
 ```js
-var msg = "Hello " + "Job One";
-var num = 1 + 1;
+if (条件式) {
+    // 条件式がtrueなら実行
+} else if (条件式) {
+    // if (条件式)がfalseかつ、 else if (条件式)がtrueなら実行
+} else {
+    // if (条件式)がfalseかつ、 else if (条件式)もfalseであれば実行
+}
 ```
 
-## 演算子について③
+## botを作ってみよう
 
-- ==
-- ===
+```html
+おいくつですか
+<input type="text" id="age">
+<button onclick="goAnswer()">goAnswer</button>
 
-比較演算子
-被演算子が等しい場合に trueを返します。等しくない場合、falseを返します。
-「===」の場合は型まで比較します。
-
-```js
-var num = 1;
-alert(num == 1); // 「true」とアラートがでます。
-alert(num === "1"); // 「false」とアラートがでます。
+<script>
+    function goAnswer() {
+        const age = document.getElementById('age').value;
+        if (age >= 20) {
+            alert("成人されてますね");
+        } else if (age >= 12 && age < 20) {
+            alert("青年ですね");
+        } else {
+            alert("小学生かそれより年下ですね");
+        }
+    }
+</script>
 ```
-
-```js
-var msg = "Hello";
-alert(msg == "world"); // 「false」とアラートがでます。
-```
-
-## 課題
-
-- WEBブラウザを開いたときに「Hello World」と表示されるhtml,jsファイルを作成してください。変数と代入演算子を使用してください。
-- WEBブラウザを開いたときに「10」と表示されるhtml,jsファイルを作成してください。変数と代入演算子を使用してください。
-- WEBブラウザを開いたときに「true」「false」と続けて表示されるhtml,jsファイルを作成してください。変数と比較演算子を使用してください。
